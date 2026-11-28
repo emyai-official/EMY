@@ -1,1 +1,130 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09060d">
+<title>Emy</title>
+<style>
+:root{--purple:#bd55f4;--muted:#aaa5b0;--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#eeeaf2}
+body{
+ min-height:100vh;display:grid;place-items:center;padding:34px 3vw;
+ background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 78px),
+ linear-gradient(90deg,#32133d 0%,#4c1e59 22%,#361541 48%,#4a1c55 73%,#28102f 100%);
+}
+.app{
+ width:min(1124px,96vw);height:min(800px,calc(100vh - 68px));min-height:620px;
+ display:grid;grid-template-columns:270px minmax(0,1fr);overflow:hidden;
+ background:#050507;border:1px solid rgba(255,255,255,.07);border-radius:27px;
+ box-shadow:0 22px 65px rgba(0,0,0,.58),0 0 0 1px rgba(0,0,0,.55)
+}
+.sidebar{background:#030304;padding:15px 18px 17px;display:flex;flex-direction:column;min-width:0}
+.brand{height:45px;display:flex;align-items:center;gap:10px;margin:0 0 12px 0;font-size:18px;font-weight:650;color:#f5f1f7}
+.logo{width:33px;height:33px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#d16cff,#6516a8);box-shadow:0 0 13px #8f36bd;color:#fff;font-size:18px}
+.copy{margin-left:auto;color:#b9b5be;font-size:17px}
+button{font:inherit;color:inherit;cursor:pointer}
+.newchat{height:37px;border:0;border-radius:8px;background:#29252e;text-align:left;padding:0 12px;font-size:14px;margin-bottom:17px;color:#f0ebf3}
+.plus{font-size:21px;vertical-align:-2px;margin-right:9px;color:#ead7f5}
+.label{font-size:13px;color:#b0abb5;margin:0 0 8px 0}
+.nav{display:grid;gap:1px}
+.nav button{height:35px;border:0;background:transparent;text-align:left;padding:0 8px;border-radius:7px;font-size:14px;color:#e1dce5}
+.nav button:hover,.nav button.selected{background:#151218}
+.ico{display:inline-flex;width:24px;align-items:center;color:#d1cbd6;font-size:16px}
+.sep{height:1px;background:rgba(255,255,255,.09);margin:15px 0 18px}
+.work-label{margin-bottom:8px}
+.premium{margin-top:auto;height:165px;border-radius:17px;background:linear-gradient(145deg,#17121b,#100d13);padding:10px 10px 11px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.crown{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#28202e;color:#d48aff;font-size:22px;margin-bottom:7px}
+.premium strong{font-size:12px;font-weight:600;margin-bottom:9px}
+.premium p{font-size:9px;line-height:1.45;color:#aaa2af;margin:0 0 10px;max-width:200px}
+.upgrade{height:34px;width:100%;border-radius:18px;border:1px solid rgba(195,104,255,.12);background:#24172b;color:#c77aef;font-size:11px}
+.main{position:relative;min-width:0;background:
+ radial-gradient(ellipse 70% 48% at 57% 0%,rgba(114,44,137,.36),transparent 100%),
+ radial-gradient(ellipse 55% 45% at 100% 20%,rgba(91,35,116,.22),transparent 100%),
+ radial-gradient(ellipse 65% 60% at 50% 42%,rgba(31,16,37,.55),transparent 100%),#09070c}
+.topbar{height:61px;display:flex;align-items:center;justify-content:space-between;padding:0 32px 0 24px}
+.pill{height:35px;border-radius:22px;border:1px solid rgba(255,255,255,.12);background:#030304;color:#e6e0ea;padding:0 16px;font-size:12px;white-space:nowrap}
+.topright{display:flex;gap:12px}
+.content{width:min(718px,calc(100% - 72px));margin:112px auto 0}
+.welcome{text-align:center;margin:0 0 91px}
+.orb{width:66px;height:66px;border-radius:50%;margin:0 auto 24px;
+ background:radial-gradient(ellipse at 38% 24%,#f0c4ff 0,#d37aff 12%,#9c30f2 30%,#4b087d 62%,#1d092d 78%);
+ border:2px solid rgba(213,143,255,.78);box-shadow:0 0 9px 2px rgba(187,73,255,.9),0 0 26px 7px rgba(150,43,225,.5),inset 0 -5px 12px rgba(0,0,0,.45)}
+h1{font-size:26px;font-weight:400;letter-spacing:-.55px;margin:0;color:#e9e3ed}
+.quicktitle{font-size:14px;margin:0 0 12px;color:#e2dce7}
+.bolt{font-size:20px;color:#c75aff;vertical-align:-2px;margin-right:7px}
+.quick{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+.quick button{height:38px;border-radius:22px;border:1px solid rgba(255,255,255,.17);background:rgba(0,0,0,.55);padding:0 16px;font-size:12px;color:#eee8f2}
+.quick button span{font-size:15px;margin-left:7px;color:#d8c9e2}
+.composer{height:139px;border:1px solid rgba(219,199,231,.36);border-radius:19px;background:rgba(27,23,31,.86);padding:16px 17px 10px;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.14)}
+.entry{display:flex;gap:12px;align-items:flex-start;flex:1}
+.spark{font-size:24px;line-height:22px;color:#c75aff}
+textarea{flex:1;min-width:0;resize:none;border:0;outline:0;background:transparent;color:#f6eff9;font-size:15px;padding:2px 0}
+textarea::placeholder{color:#9c95a2;opacity:1}
+.composerfoot{display:flex;align-items:center;gap:15px;color:#d0c9d4;font-size:12px}
+.tool{padding:3px 0;border:0;background:transparent;color:inherit;font-size:12px}
+.tool .symbol{font-size:15px;margin-right:5px;color:#c9c0d0}
+.grow{flex:1}
+.circle{width:37px;height:37px;border:0;border-radius:50%;display:grid;place-items:center;background:#25212b;font-size:17px}
+.send{background:linear-gradient(145deg,#d36bff,#9636d3);box-shadow:0 0 13px rgba(180,70,255,.25);font-size:22px}
+.messages{display:none;max-height:250px;overflow:auto;margin:-58px 0 18px;gap:9px}
+.messages.show{display:grid}
+.msg{padding:11px 14px;border-radius:13px;font-size:13px;line-height:1.45;white-space:pre-wrap;max-width:88%}
+.msg.user{margin-left:auto;background:#392044}.msg.bot{background:#17121c}
+@media(max-width:850px){body{padding:16px}.app{grid-template-columns:230px minmax(0,1fr);width:100%;height:calc(100vh - 32px)}.sidebar{padding:14px}.content{margin-top:95px;width:calc(100% - 42px)}.topbar{padding:0 18px}.welcome{margin-bottom:72px}}
+@media(max-width:620px){body{padding:0}.app{height:100vh;min-height:0;border-radius:0;grid-template-columns:62px minmax(0,1fr)}.sidebar{padding:12px 7px;align-items:center}.brand{justify-content:center;width:100%}.brand .name,.copy,.newchat .newlabel,.label,.nav .navlabel,.sep,.premium{display:none}.newchat{width:42px;height:39px;padding:0;text-align:center;font-size:0}.newchat .plus{margin:0;font-size:21px}.nav{width:100%}.nav button{text-align:center;padding:0}.ico{width:auto;font-size:17px}.topbar{height:57px;padding:0 10px}.pill{font-size:10px;padding:0 10px;height:32px}.topright{gap:6px}.content{width:calc(100% - 26px);margin:90px auto 0}.welcome{margin-bottom:65px}.orb{width:58px;height:58px}h1{font-size:20px}.quick{gap:6px}.quick button{padding:0 10px;font-size:10px;height:35px}.composer{height:142px;padding:13px 11px 9px}.composerfoot{gap:9px}.tool{font-size:10px}.circle{width:33px;height:33px}}
+</style>
+</head>
+<body>
+<div class="app">
+ <aside class="sidebar">
+  <div class="brand"><div class="logo">➤</div><span class="name">Emy</span><span class="copy">▢</span></div>
+  <button class="newchat" id="newChat"><span class="plus">＋</span><span class="newlabel">New Chat</span></button>
+  <p class="label">Features</p>
+  <nav class="nav">
+   <button class="selected" data-section="Chat"><span class="ico">▱</span><span class="navlabel">Chat</span></button>
+   <button data-section="Archived"><span class="ico">▣</span><span class="navlabel">Archived</span></button>
+   <button data-section="Library"><span class="ico">▧</span><span class="navlabel">Library</span></button>
+  </nav>
+  <div class="sep"></div>
+  <p class="label work-label">Workspaces</p>
+  <nav class="nav">
+   <button data-action="New Project"><span class="ico">⊕</span><span class="navlabel">New Project</span></button>
+   <button data-action="Image"><span class="ico">▧</span><span class="navlabel">Image</span></button>
+   <button data-action="Presentation"><span class="ico">▧</span><span class="navlabel">Presentation</span></button>
+   <button data-action="Biset"><span class="ico">▧</span><span class="navlabel">Biset</span></button>
+   <button data-action="Image"><span class="ico">▧</span><span class="navlabel">Image</span></button>
+  </nav>
+  <div class="premium"><div class="crown">♛</div><strong>Upgrade to premium</strong><p>Boost productivity with seamless automation and responsive AI tools. Unlock more with Emy Pro.</p><button class="upgrade">Upgrade</button></div>
+ </aside>
+ <main class="main">
+  <header class="topbar"><button class="pill" id="model">ChatGPT 4.0　⌄</button><div class="topright"><button class="pill" id="config">Configuration ⚙</button><button class="pill" id="export">Export ↥</button></div></header>
+  <section class="content">
+   <div class="messages" id="messages"></div>
+   <div class="welcome" id="welcome"><div class="orb"></div><h1>Ready to Create Something New?</h1></div>
+   <p class="quicktitle"><span class="bolt">ϟ</span>Quick Actions</p>
+   <div class="quick"><button data-fill="Help me create an image: ">Create Image <span>▧</span></button><button data-fill="Let's brainstorm ideas about: ">Brainstorm <span>♧</span></button><button data-fill="Help me make a plan for: ">Make a plan <span>▤</span></button></div>
+   <div class="composer"><div class="entry"><span class="spark">✦</span><textarea id="prompt" placeholder="Ask Anything..." rows="2"></textarea></div><div class="composerfoot"><button class="tool" id="attach"><span class="symbol">♧</span>Attach</button><input id="files" type="file" multiple hidden><button class="tool" id="settings"><span class="symbol">☷</span>Settings</button><button class="tool" id="options"><span class="symbol">⊞</span>Options</button><span class="grow"></span><button class="circle" id="mic" title="Voice input">🎙</button><button class="circle send" id="send" title="Send">↑</button></div></div>
+  </section>
+ </main>
+</div>
+<script>
+const promptEl=document.getElementById('prompt'),messages=document.getElementById('messages'),welcome=document.getElementById('welcome');
+function add(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;messages.appendChild(el);messages.classList.add('show');}
+function send(){const value=promptEl.value.trim();if(!value)return;welcome.style.display='none';add(value,'user');promptEl.value='';add('Connect your AI API in the backend to enable real AI replies. This page is currently the visual frontend.','bot');}
+document.getElementById('send').onclick=send;
+promptEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+document.getElementById('newChat').onclick=()=>{messages.innerHTML='';messages.classList.remove('show');welcome.style.display='';promptEl.value='';};
+document.querySelectorAll('[data-fill]').forEach(b=>b.onclick=()=>{promptEl.value=b.dataset.fill;promptEl.focus();});
+document.getElementById('attach').onclick=()=>document.getElementById('files').click();
+document.getElementById('files').onchange=e=>{const names=[...e.target.files].map(f=>f.name).join(', ');if(names)promptEl.value+=(promptEl.value?'\\n':'')+'[Attached: '+names+'] ';};
+document.getElementById('mic').onclick=()=>{const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){alert('Voice input is not supported by this browser.');return;}const r=new R();r.lang='hi-IN';r.onresult=e=>promptEl.value+=e.results[0][0].transcript;r.start();};
+document.getElementById('export').onclick=()=>{const txt=[...messages.children].map(m=>(m.classList.contains('user')?'You: ':'Emy: ')+m.textContent).join('\\n\\n');const a=document.createElement('a');const u=URL.createObjectURL(new Blob([txt||'No messages yet'],{type:'text/plain'}));a.href=u;a.download='emy-chat.txt';a.click();URL.revokeObjectURL(u);};
+document.getElementById('model').onclick=()=>alert('Model selection will be connected to the AI backend.');
+['config','settings','options'].forEach(id=>document.getElementById(id).onclick=()=>alert('This control will be activated in the next development step.'));
+document.querySelectorAll('[data-section]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-section]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');});
+document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>alert(b.dataset.action+' workspace will be added next.'));
+</script>
+</body>
+</html>
